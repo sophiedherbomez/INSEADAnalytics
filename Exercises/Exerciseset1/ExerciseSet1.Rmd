@@ -40,7 +40,7 @@ Let's now see the exercise.
 
 We download daily prices (open, high, low, close, and adjusted close) and volume data of publicly traded companies and markets from the web (e.g. Yahoo! or Google, etc). This is done by sourcing the file data.R as well as some helper functions in herpersSet1.R which also installs a number of R libraries (hence the first time you run this code you will see a lot of red color text indicating the *download* and *installation* process):
 
-```{r eval = TRUE, echo=TRUE, error = FALSE, warning=FALSE,message=FALSE,results='asis'}
+```{r eval = TRUE, echo=FALSE, error = FALSE, warning=FALSE,message=FALSE,results='asis'}
 source("helpersSet1.R")
 source("dataSet1.R")
 ```
@@ -96,10 +96,15 @@ pnl_plot(SPY)
 <br> round(100*sd(AAPL),3)
 <br>[1] 2.389
 <br>3. for any company, find its ticker symbol for the <br>environment you're in (here yahoo!), for yahoo! it's YHOO, <br>and add it to the vector myticker and run the code again
-<br>
-```{r eval = FALSE, echo=TRUE}
+<br> cumulative return yahoo 284.4
+<br>average return yahoo 0.07
+<br>standard deviation 3.019
+```{r eval = FALSE, echo=TRUE, fig=TRUE}
 source("dataSet1.R")
  YHOO = StockReturns[,"YHOO"]
+ round(100*sum(YHOO),1)
+ round(100*mean(YHOO),3)
+ round(100*sd(YHOO),3)
 pnl_plot(YHOO)
 ```
 <hr>
@@ -162,14 +167,14 @@ This is an important step and will get you to think about the overall process on
 2. *(Extra Exercise)*  Can you get the returns of a few companies and plot the returns of an equal weighted portfolio with those companies during some period you select? 
 
 **Your Answers here:**
-<br>1. change the start date to 2000-12-29 l9. We can only get it from 2001-01-02 because there is no trading on 2001-01-01 and the last day the stock exchange was open was 2000-12-29
+<br>1. in dataset1.R change the start date to 2000-12-29 l9. We can only get it from 2001-01-02 because there is no trading on 2001-01-01 and the last day the stock exchange was open was 2000-12-29
 <br>
 ```{r echo=TRUE, comment=NA, warning=FALSE, message=FALSE,results='asis',fig.align='center', fig.height=4,fig.width= 6, fig=TRUE}
 source("dataSet1.R")
 SPY = StockReturns[,"SPY"]
 pnl_plot(SPY)
 ```
-<br>2. adapt StartDate and create EndDate to get the wished data range (adapt using from StartDate to EndDate), adapt myticker to have the symbols of the various companies we want, and create the equally weighted portfolio portfolio = apply(StockReturns,1,mean). Then plot it.
+<br>2. adapt StartDate and create EndDate to get the wished <br>data range (adapt using from StartDate to EndDate), <br>adapt myticker to have the symbols of the various <br>companies we want, and create the equally weighted <br>portfolio portfolio = apply(StockReturns,1,mean). Then <br>plot it.
 <br>
 
 <hr>
